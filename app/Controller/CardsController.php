@@ -2,7 +2,7 @@
 class CardsController extends AppController {
 	
 	/* var $uses = [ 'User' ]; */
-	 var $uses = [ 'Deck' ]; 
+	 var $uses = [ 'Deck','Card' ]; 
 
  
     public function index( $deck_id=null ){
@@ -19,8 +19,15 @@ class CardsController extends AppController {
 		$cards = $this->paginate('Card');
         $this->set(compact('cards'));
 		
-
+			$decks = $this->Deck->find('first',
+							array(
+								'conditions' => [
+									'Deck.id' => $deck_id
+								]
+							)
+			);
 			
+			$this->set('decks', $decks);
 		
 	}
 

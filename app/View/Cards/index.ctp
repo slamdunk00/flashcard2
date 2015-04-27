@@ -1,6 +1,7 @@
 <?php
+	$pic = $decks['Deck']['name'];
 	echo 'This is cards index.ctp';
-	//echo $this->Html->image('../cardImg/Penguins.jpg', array('width' => '200px','alt'=>'Little Penguins'));
+	//echo $this->Html->image($pic, array('width' => '200px','alt'=>'$pic'));
 	// echo '<img src="cardImg/Penguins.jpg" width="40px" height="40px">';
 	?>
 	<table align = 'center'>
@@ -30,12 +31,20 @@
 	</table>
 	
 <p></p>
+<table align = 'center'>
+	<tr>
+	<td><?php echo $this->Html->link( " Edit Card ",   array('controller'=>'cards','action'=>'edit' ,'?' => array('deck_id' => $deck_id )) ).'</p></li>'; ?></td>
+	<td><?php echo $this->Html->link( " Delete Card ",   array('controller'=>'cards','action'=>'edit' ,'?' => array('deck_id' => $deck_id )) ).'</p></li>'; ?></td>
+	</tr>
+	
+	</table>
+<p></p>
 
  <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="card-container">
 	<div class="flipper">
 <?php foreach($cards as $card):
 	echo	'<div class="front">';
-	echo	$card['Card']['front'];
+	echo	 $this->Html->image($pic, array('width' => '200px','alt'=>'$pic'));
 	echo	'</div>';
 	echo	'<div class="back">';
 	echo	$card['Card']['back'];
