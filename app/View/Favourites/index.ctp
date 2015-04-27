@@ -1,14 +1,12 @@
-<?php  echo 'This is Deck index.ctp';?>
-<h1><?php echo $cat_name; ?></h1>
+<?php  echo 'This is Deck favourite.ctp';?>
 
 <table>
 	<thread>
-		<th>User_id</th><th>deck_id</th>
+		<th>Deck ID</th><th></th>
 	</thread>
-	<?php foreach($favourite as $favourite); ?>
+	<?php foreach($favourite as $favourites): ?>
 	<tr>
-		<td><?php echo $favourite['Favourites']['user_id'] ?></td>
-		<td><?php echo $favourite['Favourites']['deck_id'] ?></td>
+		<td><?php echo $favourites['Favourite']['deck_id'];?></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
