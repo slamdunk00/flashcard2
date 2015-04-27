@@ -4,10 +4,7 @@ class FavouriteController extends AppController {
 	var $uses = array('Favourite');
 	
 	public function index() {
-		$cat_id = isset($this->request->query['cat_id']) ? $this->request->query['cat_id'] : null;
-		$cat_name = isset($this->request->query['cat_name']) ? $this->request->query['cat_name'] : null;
-		
-		$favourites = $this->Favourite->find('all', array('fields' array('Favourite.user_id', 'Favourite.deck_id')));
+		$favourites = $this->Favourite->find('all', array('conditions' => ['Favourites.user_id' => $user_id], 'recursive' => -1));
 		$this->set('favourite', $favourites);
 	}
 }

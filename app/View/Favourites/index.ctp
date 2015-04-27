@@ -7,7 +7,8 @@
 	</thread>
 	<?php foreach($favourite as $favourite); ?>
 	<tr>
-		<td><?php echo $favourite['favourites']['user_id'] ?></td>
-		<td><?php echo $favourite['favourites']['deck_id'] ?></td>
+		<td><?php echo $favourite['Favourites']['user_id'] ?></td>
+		<td><?php echo $favourite['Favourites']['deck_id'] ?></td>
 	</tr>
+	<?php endforeach; ?>
 </table>
