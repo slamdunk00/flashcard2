@@ -1,3 +1,6 @@
+<?php  echo 'This is Deck index.ctp';?>
+<h1><?php echo $cat_name; ?></h1>
+
 <table>
 	<thread>
 		<th>User_id</th><th>deck_id</th>

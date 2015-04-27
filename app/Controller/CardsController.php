@@ -2,7 +2,7 @@
 class CardsController extends AppController {
 	
 	/* var $uses = [ 'User' ]; */
-	 var $uses = [ 'Deck' ]; 
+	 var $uses = [ 'Deck','Card' ]; 
 
  
     public function index( $deck_id=null ){
