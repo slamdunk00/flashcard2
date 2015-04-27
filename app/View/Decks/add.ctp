@@ -1,7 +1,7 @@
-
+<h1>Add Deck</h1>
 <?php echo $this->Form->create('Deck');?>
     <fieldset>
-        <legend><?php echo __('Add Deck'); ?></legend>
+	
         <?php 
 		echo $this->Form->hidden('user_id', array('value' => $user_id));
 		//echo $this->Form->hidden('category_id', array('value' => 2));?>
@@ -38,6 +38,8 @@
 </table>
        <?php echo $this->Form->submit('Add Deck', array('class' => 'form-submit',  'title' => 'Click here to add the user') );  ?>
     </fieldset>
-<?php echo $this->Form->end(); ?>
+<?php echo $this->Form->end(); 
+echo $this->Html->link("Back", array('action'=> 'index'), array( 'class' => 'button'));
+?>
 
 
