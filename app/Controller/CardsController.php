@@ -61,11 +61,19 @@ class CardsController extends AppController {
     
 
 	    public function edit() {		
+		
+		
 		$card_id = $this->params['url']['card_id'];
 		$this->set('card_id', $card_id);
 		$deck_id = $this->params['url']['deck_id'];
 		$this->set('deck_id', $deck_id);
 
+		$card = $this->Card->find('first',
+			array(
+			'conditions' => ['Card.id' => $card_id]));
+			
+			$this->set('card', $card);
+		
 
             if ($this->request->is('post') || $this->request->is('put')) {
                 $this->Card->id = $card_id;

@@ -4,15 +4,9 @@
 </head>
 <body>
 <?php
-
-	// echo '<img src="cardImg/Penguins.jpg" width="40px" height="40px">';
-	?>
+	//echo $this->Html->image('../cardImg/Penguins.jpg', array('width' => '50px','alt'=>'asd'));?>
 	<table align = 'center' >
-	
-	<tr>
-	<td>Deck Name</td>
-	<td><?php echo $decks['Deck']['name'] ?></td>
-	</tr>
+	<h1><?php echo $decks['Deck']['name'] ?></h1>
 	<tr>
 	<td>Deck Category</td>
 	<td><?php echo $cat['Category']['name'] ?> </td>
@@ -45,7 +39,7 @@
 <?php
 	$front = $card['Card']['front'];
 	echo	'<div class="front">';
-	echo	 $this->Html->image($front, array('width' => '200px','alt'=>$front));
+	echo	 $this->Html->image($front, array('width' => '50px','alt'=>$front));
 	echo	'</div>';
 	echo	'<div class="back">';
 	echo	$card['Card']['back'];
