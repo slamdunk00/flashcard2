@@ -51,13 +51,13 @@ class DecksController extends AppController {
 	
 	
 	
-    public function edit($id = null) {
+    public function edit($id = null) {		
 
 		$deck_id = $this->params['url']['deck_id'];
 		$this->set('deck_id', $deck_id);
  		$categories = $this->Category->getCategory(); 
 		$this->set('category', $categories); 
- 
+
             if ($this->request->is('post') || $this->request->is('put')) {
                 $this->Deck->id = $id;
                 if ($this->Deck->save($this->request->data)) {
@@ -67,28 +67,29 @@ class DecksController extends AppController {
                     $this->Session->setFlash(__('Unable to Edit your Deck.'));
                 }
             }
+			
+			//แอ้ดเพิ่มเข้ามา
+			$decks = $this->Deck->find('first',
+				array(
+				'conditions' => ['Deck.id' => $deck_id]));
+			
+			$this->set('decks', $decks);
+			
     }
 	
-	    public function test() {
-
- 
-
+		public function delete() {	
+	
+	
+		$deck_id = $this->params['url']['deck_id'];
+		$this->set('deck_id', $deck_id);
+		
+		$this->Deck->id = $deck_id;
+		$this->Deck->delete();
+		
+		$this->redirect(array('action' => 'index' ));
+			
     }
 	
-		public function favourite() {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
 	
 	public function search(){
 		if(isset($this->params['url']['search'])){  

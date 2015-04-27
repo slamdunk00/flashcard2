@@ -9,6 +9,8 @@ class CardsController extends AppController {
 		$deck_id = $this->params['url']['deck_id'];
 		$this->set('deck_id', $deck_id);
 		
+
+		
 		$this->paginate = array(
 								'order' => array('Card.id'=>'asc'),
 								'conditions' => [
@@ -28,6 +30,13 @@ class CardsController extends AppController {
 			);
 			
 			$this->set('decks', $decks);
+			
+			$cat = $this->Category->find('first',
+			array(
+			'conditions' => ['Category.id' => $decks['Deck']['category_id']]));
+			
+			$this->set('cat', $cat);
+			
 		
 	}
 
@@ -44,8 +53,45 @@ class CardsController extends AppController {
                 $this->redirect(array('action' => 'index','?' => array('deck_id' => $deck_id )));
 				$this->Session->setFlash(__('The card has been created'));
                 $this->redirect(array('action' => 'index','?' => array('deck_id' => $deck_id )));
+				}else{
+                    $this->Session->setFlash(__('Unable to Created your Card.'));
+                }
             } 
         }
-    } 
+    
+
+	    public function edit() {		
+		$card_id = $this->params['url']['card_id'];
+		$this->set('card_id', $card_id);
+		$deck_id = $this->params['url']['deck_id'];
+		$this->set('deck_id', $deck_id);
+
+
+            if ($this->request->is('post') || $this->request->is('put')) {
+                $this->Card->id = $card_id;
+                if ($this->Card->save($this->request->data)) {
+                    $this->Session->setFlash(__('Card has been Edit'));
+                    $this->redirect(array('controller' => 'cards','action' => 'index', '?' => array('deck_id' => $deck_id ) ));
+                }else{
+                    $this->Session->setFlash(__('Unable to Edit your Card.'));
+                }
+            }
+			
+    }
+	public function delete() {	
+	
+	
+		$card_id = $this->params['url']['card_id'];
+		$this->set('card_id', $card_id);
+		$deck_id = $this->params['url']['deck_id'];
+		$this->set('deck_id', $deck_id);
+		
+		$this->Card->id = $card_id;
+		$this->Card->delete();
+		
+		$this->redirect(array('controller' => 'cards','action' => 'index', '?' => array('deck_id' => $deck_id ) ));
+			
+    }
+	
 }
 ?>
