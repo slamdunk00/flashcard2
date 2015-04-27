@@ -2,6 +2,7 @@
 class DecksController extends AppController {
 	
 	/* var $uses = [ 'User' ]; */
+	var $uses = [ 'Favourite' ]; 
 
 	
     public function index() {
@@ -87,6 +88,26 @@ class DecksController extends AppController {
  
 
     }
+	
+		public function favourite() {
+
+		$favourite = $this->favourites->find('all', array('fields', array('user_id', 'deck_id')));
+		$this->set('favourite', $favourite);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 
 	
 	}
