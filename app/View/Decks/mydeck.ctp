@@ -20,7 +20,6 @@
 	echo '<br/>';
 	echo $this->Form->input('search', array('between'=>'<label for="search" class="main_search">Search</label>','label'=>false));
     echo $this->Form->button('Search', array('class'=>'btn btn-success btn-lg'));
-    echo $this->Form->end;
+    echo $this->Form->end
 	
-	echo $users['User']['firstname'];
 ?>

@@ -24,7 +24,6 @@
 
 <?php 
 
-echo $this->Html->link( 'Back to "Manage user"',   array('controller'=>'users','action'=>'index') );
 echo '<br/>';
 echo $this->Html->link( "Logout",   array('action'=>'logout') ); 
 ?>

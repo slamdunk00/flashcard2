@@ -71,7 +71,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					echo '<li><p>'.$this->Html->link( " Mange User ",   array('controller'=>'users','action'=>'index') ).'</p></li>'; 
 				}
 				echo '<li><p>'.$this->Html->link( " Add New Deck ",   array('controller'=>'decks','action'=>'add') ).'</p></li>';
-				echo '<li><p>'.$this->Html->link( " All My Deck ",   array('controller'=>'decks','action'=>'index', $user_id ) ).'</p></li>';
+				echo '<li><p>'.$this->Html->link( " All My Deck ",   array('controller'=>'decks','action'=>'mydeck', $user_id ) ).'</p></li>';
 				echo '<li><p>'.$this->Html->link( " Favourite ",   array('controller'=>'favourite','action'=>'index', $user_id ) ).'</p></li>';
 				echo '<li><p>'.$this->Html->link( " Achievement ",   array('controller'=>'achievements','action'=>'index', $user_id ) ).'</p></li>';
 				echo '<li><p>'.$this->Html->link( " Edit Profile ",   array('controller'=>'users','action'=>'edit', $user_id ) ).'</p></li>';

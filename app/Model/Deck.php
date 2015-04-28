@@ -102,7 +102,7 @@ class Deck extends AppModel {
 		'Card' => array(
 			'className' => 'Card',
 			'foreignKey' => 'deck_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
