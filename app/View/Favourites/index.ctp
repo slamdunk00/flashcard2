@@ -4,9 +4,9 @@
 	<thread>
 		<th>Deck ID</th><th></th>
 	</thread>
-	<?php foreach($deck_fav as $deck_fav): ?>
+	<?php foreach($deck[user_id] as $decks): ?>
 	<tr>
-		<td><?php echo $deck_fav['Deck']['name'];?></td>
+		<td><?php echo $decks['Deck']['name'];?></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
