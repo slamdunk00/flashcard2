@@ -52,6 +52,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					echo 'Welcome, '.$firstname;
 					echo ' | ';
 					echo $this->Html->link( "   Logout",   array('controller'=>'users','action'=>'logout') ); 
+					
+					echo '<input type="button" class="btn btn-success btn-lg" value="SEARCH" id="search_btn">';
+					echo '<input type="text" class="form-control" placeholder="search for deck"  id="search_box" onclick="do_search()"><br/>';
 				}
 			?>
 		</div>
@@ -94,5 +97,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</div>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
+	<script>
+		
+	</script>
+	
 </body>
 </html>
