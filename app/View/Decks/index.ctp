@@ -17,5 +17,5 @@
 <?php echo $this->Paginator->numbers(array(   'class' => 'numbers'     ));?>
 <span style="margin-left:10px;"><?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?></span>
 <?php	
-	// echo $users['User']['firstname'];
+	echo $users['User']['firstname'];
 ?>
