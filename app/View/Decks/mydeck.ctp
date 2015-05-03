@@ -5,11 +5,11 @@
 
 <h1><?php echo $cat_name; ?></h1>
 <?php 
-	foreach($decks as $deck):
+	foreach($user as $deck):
 	echo '<u>';
-	echo $this->Html->link( $deck['Deck']['name'],   array('controller'=>'cards','action'=>'index', '?' => array('deck_id' => $deck['Deck']['id'] )  ));
-	echo '</u>';
-	echo ' by '.$deck['Deck']['user_id'].'<br/>';
+	echo $this->Html->link($deck['Deck']['name'],   array('controller'=>'cards','action'=>'index', '?' => array('deck_id' => $deck['Deck']['id'] )  ));
+	echo '</u></br>';
+	//echo ' by '.$deck['Deck']['user_id'].'<br/>';
 	//echo $users['User']['firstname'];	
 	endforeach;
 ?>

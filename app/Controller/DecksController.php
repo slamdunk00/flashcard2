@@ -131,16 +131,14 @@ class DecksController extends AppController {
 			
     }
 	
-	public function mydeck(){
+	public function mydeck($user_id=NULL){
 		$cat_id = isset($this->request->query['cat_id']) ? $this->request->query['cat_id'] : null;
 		$cat_name = isset($this->request->query['cat_name']) ? $this->request->query['cat_name'] : null;
 		
-		$user = $this->User->find('all');
+		$user = $this->Deck->find('all', array('conditions' => ['user.id' => $user_id]));
 		$this->set('user', $user);
-
-			$cat_name = "My Deck<br/>";
 		
-
+		$cat_name = "My Deck<br/>";
 		
 		$decks = $this->paginate('Deck');
 		
@@ -151,11 +149,11 @@ class DecksController extends AppController {
         // $this->set(compact('decks'));
 		$this->set('cat_name', $cat_name);
 		
-			$users = $this->User->find('first',
-				array(
-				'conditions' => ['User.id' => $user_id]));
-			
-			$this->set('users', $users);
+		/*$users = $this->User->find('first',
+			array(
+			'conditions' => ['User.id' => $user_id]));
+		
+		$this->set('users', $users);*/
 	}
 }
 
