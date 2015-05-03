@@ -4,23 +4,11 @@ class FavouriteController extends AppController {
 	var $uses = array('Favourite', 'Deck', 'User');
 	
 	public function index($user_id=NULL) {
-		if (empty($user_id=NULL)) {
-			$this->redirect([
-				'controller' => 'users',
-				'action' => 'index'
-			]);
-		}
 		
-		$deck = $this->Deck->find('all', array(
-			'conditions' => ['Deck.id' => $user_id]
-		));
+		$user = $this->Favourite->find('list', array('conditions' => ['Favourite.user_id' => $user_id], 'fields' => ['Favourite.deck_id']));
+		//$this->set('user', $user);
 		
-		if (empty($deck)) {
-			$this->redirect([
-				'controller' => 'users',
-				'action' => 'index']);
-		}
-		
+		$deck = $this->Deck->find('all', array('conditions' => ['Deck.id' => $user]));
 		$this->set('deck', $deck);
 		
 		//$favourites = $this->Favourite->find('all', array('Favourite.user_id', 'Favourite.deck_id'));

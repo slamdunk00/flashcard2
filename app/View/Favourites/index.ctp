@@ -1,12 +1,12 @@
-<?php  echo 'This is Deck favourite.ctp';?>
-
-<table>
-	<thread>
-		<th>Deck ID</th><th></th>
-	</thread>
-	<?php foreach($deck[user_id] as $decks): ?>
-	<tr>
-		<td><?php echo $decks['Deck']['name'];?></td>
-	</tr>
-	<?php endforeach; ?>
-</table>
+<?php
+	foreach($deck as $decks): 
+	echo '<ul>';
+	echo '<li>';
+	echo $this->Html->link($decks['Deck']['name'], ['controller' => 'cards', 'action' => 'index',
+	'?' => ['deck_id' => $decks['Deck']['id']]]);
+	echo ' by ';
+	echo $decks['Deck']['user_id'];
+	echo '</li>';
+	echo '</ul>';
+	endforeach;
+?>
