@@ -143,11 +143,6 @@ class User extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
-		'Favourite' => array(
-			'className' => 'Favourite',
-			'foreignKey' => 'user_id',
-			'dependent' => false
 		)
 	);
 

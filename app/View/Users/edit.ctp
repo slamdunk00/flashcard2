@@ -19,11 +19,8 @@
 ?>
     </fieldset>
 <?php echo $this->Form->end(); ?>
-</div>
-<br/>
-
 <?php 
-
-echo '<br/>';
 echo $this->Html->link( "Logout",   array('action'=>'logout') ); 
 ?>
+</div>
+<br/>

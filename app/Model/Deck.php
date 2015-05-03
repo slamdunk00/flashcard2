@@ -137,11 +137,6 @@ class Deck extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
-		'Favourite' => array(
-			'className' => 'Favourite',
-			'foreignKey' => 'deck_id',
-			'dependent' => false
 		)
 	);
 

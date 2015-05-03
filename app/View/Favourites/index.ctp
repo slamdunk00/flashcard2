@@ -1,12 +1,12 @@
-<?php
-	foreach($deck as $decks): 
-	echo '<ul>';
-	echo '<li>';
-	echo $this->Html->link($decks['Deck']['name'], ['controller' => 'cards', 'action' => 'index',
-	'?' => ['deck_id' => $decks['Deck']['id']]]);
-	echo ' by ';
-	echo $decks['Deck']['user_id'];
-	echo '</li>';
-	echo '</ul>';
-	endforeach;
-?>
+<?php  echo 'This is Deck favourite.ctp';?>
+
+<table>
+	<thread>
+		<th>Deck ID</th><th></th>
+	</thread>
+	<?php foreach($favourite as $favourites): ?>
+	<tr>
+		<td><?php echo $favourites['Favourite']['deck_id'];?></td>
+	</tr>
+	<?php endforeach; ?>
+</table>
