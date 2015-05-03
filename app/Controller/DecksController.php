@@ -4,11 +4,49 @@ class DecksController extends AppController {
 	var $uses = [ 'User' ,'Deck' ];
 	
     public function index() {
+		
+		if($this->request->isAjax()) {
+            // $this->autoRender = false;
+			$result = "";
+			$key = $this->request->data('searchString').'%';
+			$decks = $this->Deck->find('all', array( 'order' => array('Deck.name'=>'asc'), 'conditions'=>array('Deck.name LIKE'=>$key) ));
+			// $this->set('decks',$decks);
+			// $this->paginate = array(
+							// 'order' => array('Deck.name'=>'asc'),
+							// 'conditions' => [
+								// array('decks.name LIKE' => 'a%')
+							// ],
+							// 'limit' => 5
+			// );
+			// $decks = $this->paginate('Deck');
+			// $this->set(compact('decks'));
+			$found = false;
+			foreach($decks as $deck):
+			$found = true;
+			// echo $this->Html->link( $deck['Deck']['name'],  array('controller'=>'cards','action'=>'index', '?' => array('deck_id' => $deck['Deck']['id'] )  ));
+			$result.=$deck['Deck']['name'].'<br/>';
+			// $result.="$this->Html->link(";
+			// $result.=$deck['Deck']['name'].",";
+			// $result.="array('controller'=>'cards','action'=>'index',";
+			// $result.=" '?' => array('deck_id' => ".$deck['Deck']['id']." ) ))";
+			// $result.="<br/>";
+			endforeach;
+			// echo $result;
+			if($found){
+				echo '<h1>Search Result</h1>';
+				echo $result;
+			}else{
+				echo "<h1>No item match your search...</h1>";
+			}
+			// echo $result;
+            die();
+		}
+		
 		$cat_id = isset($this->request->query['cat_id']) ? $this->request->query['cat_id'] : null;
 		$cat_name = isset($this->request->query['cat_name']) ? $this->request->query['cat_name'] : null;
 		
-		$user = $this->User->find('all');
-		$this->set('user', $user);
+		// $user = $this->User->find('all');
+		// $this->set('user', $user);
 		if( $cat_id !== null ){
 			$this->paginate = array(
 								'order' => array('Deck.name'=>'asc'),
@@ -20,15 +58,13 @@ class DecksController extends AppController {
 		}else{
 			$cat_name = "All Deck<br/>(from the Lastest)";
 			$this->paginate = array(
-								'order' => array('Deck.id'=>'asc'),
+								'order' => array('Deck.id'=>'desc'),
 								'limit' => 10
 			);
 		}
 		
 		$decks = $this->paginate('Deck');
 		$this->set(compact('decks'));
-		
-
 		
         // $decks = $this->paginate('Deck');
         // $this->set(compact('decks'));
@@ -39,8 +75,6 @@ class DecksController extends AppController {
 				'conditions' => ['User.id' => 1]));
 			
 			$this->set('users', $users);
-			
-		
     }
 	
 	public function add(){
@@ -57,8 +91,6 @@ class DecksController extends AppController {
             } 
         }
     }
-	
-	
 	
     public function edit($id = null) {		
 
@@ -99,15 +131,7 @@ class DecksController extends AppController {
 			
     }
 	
-	
-	public function search(){
-		if(isset($this->params['url']['search'])){  
-			echo 'search text has been found';
-		}
-		
-	}
-	
-		public function mydeck(){
+	public function mydeck(){
 		$cat_id = isset($this->request->query['cat_id']) ? $this->request->query['cat_id'] : null;
 		$cat_name = isset($this->request->query['cat_name']) ? $this->request->query['cat_name'] : null;
 		
@@ -132,16 +156,7 @@ class DecksController extends AppController {
 				'conditions' => ['User.id' => $user_id]));
 			
 			$this->set('users', $users);
-			
-		
-
-		
 	}
-	
-
-
-
-	
-	}
+}
 
 ?>

@@ -28,9 +28,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		// echo $this->Html->meta('icon');
 		echo $this->Html->css('bootstrap.css');
+		
+		echo $this->Html->script('jquery-1.11.3.js');
 		echo $this->Html->css('style2.css');
 		echo $this->Html->css('MyFlip.css');
-		echo $this->Html->script('jquery.js');
+		// echo $this->Html->script('jquery-1.11.2.min.js');
 		echo $this->Html->script('flip.js');
 
 		echo $this->fetch('meta');
@@ -53,8 +55,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					echo ' | ';
 					echo $this->Html->link( "   Logout",   array('controller'=>'users','action'=>'logout') ); 
 					
-					echo '<input type="button" class="btn btn-success btn-lg" value="SEARCH" id="search_btn">';
-					echo '<input type="text" class="form-control" placeholder="search for deck"  id="search_box" onclick="do_search()"><br/>';
+					echo '<input type="button" class="btn btn-success btn-lg" value="SEARCH" id="search_btn" onclick="do_search()"/>';
+					echo '<input type="text" class="form-control" placeholder="search for deck"  id="search_box"><br/>';
 				}
 			?>
 		</div>
@@ -98,7 +100,19 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
 	<script>
-		
+		function do_search(){
+			var $searchString = $('#search_box').val();
+			$.ajax({
+				url: '/flashcard2/decks/index/',
+				type: 'POST',
+				data: {
+					'searchString' : $searchString
+				},
+				success: function (data){
+					$('#content').html(data);
+				}
+			});
+		}
 	</script>
 	
 </body>
