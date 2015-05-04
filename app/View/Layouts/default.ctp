@@ -46,15 +46,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<div id="header">
 			<?php
 				if($this->Session->check('Auth.User')){
-					// echo $this->Html->link( " HOME ",   array('controller'=>'decks','action'=>'index') ); 
-					// if( $role == 'a'){
-						// echo '|';
-						// echo $this->Html->link( " Mange User ",   array('controller'=>'users','action'=>'index') ); 
-					// }
-					echo 'Welcome, '.$firstname;
-					echo ' | ';
-					echo $this->Html->link( "   Logout",   array('controller'=>'users','action'=>'logout') ); 
-					
+					echo $this->Html->image('logo4.png');
 					echo '<input type="button" class="btn btn-success btn-lg" value="SEARCH" id="search_btn" onclick="do_search()"/>';
 					echo '<input type="text" class="form-control" placeholder="search for deck"  id="search_box"><br/>';
 				}
@@ -65,13 +57,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			if($this->Session->check('Auth.User')){
 				echo '<div id="sidebar">';
 				echo '<span>Category</span><ul>';
+				echo'<li><p>'.$this->Html->link( " ALL ",   array('controller'=>'decks','action'=>'index') ).'</p></li>'; 
 				foreach ($Last5Cat as $cat):
 				echo '<li><p>'.$this->Html->link( $cat['Category']['name'],   array('controller'=>'decks','action'=>'index', '?' => array('cat_id' => $cat['Category']['id'], 'cat_name' => $cat['Category']['name'] ) ) ) .'</p></li>';
 				endforeach;
 				echo '</ul>';
 				echo '<span>Profile</span><ul>';
 				
-				echo'<li><p>'.$this->Html->link( " HOME ",   array('controller'=>'decks','action'=>'index') ).'</p></li>'; 
 				if( $role == 'a'){
 					echo '<li><p>'.$this->Html->link( " Mange User ",   array('controller'=>'users','action'=>'index') ).'</p></li>'; 
 				}
@@ -80,6 +72,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				echo '<li><p>'.$this->Html->link( " Favourite ",   array('controller'=>'favourite','action'=>'index', $user_id ) ).'</p></li>';
 				echo '<li><p>'.$this->Html->link( " Achievement ",   array('controller'=>'achievements','action'=>'index', $user_id ) ).'</p></li>';
 				echo '<li><p>'.$this->Html->link( " Edit Profile ",   array('controller'=>'users','action'=>'edit', $user_id ) ).'</p></li>';
+				echo '<li><p>'.$this->Html->link( " Logout",   array('controller'=>'users','action'=>'logout') ) .'</p></li>';
 				echo '</ul></div>';
 			}
 		?>

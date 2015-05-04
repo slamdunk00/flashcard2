@@ -8,22 +8,31 @@
     src: url(../fonts/TH_Chakra_Petch_Bold.ttf);
 }
 
+@font-face {
+    font-family: Waffle Regular;
+    src: url(../fonts/Waffle Regular.ttf);
+}
+
 html{
 	background: #7D8A2E;
+	font-family: Waffle Regular;
+}
+
+link {
+	outline:none;
 }
 
 body {
 	font-size: 25px;
-	/* background: red; */
 	color: white;
 	margin-top: 10px;
-	font-family: TH_Chakra_Petch;
+	font-family: Waffle Regular;
 	width:90%;
 	margin-left:5%;
 }
 
 body h2{
-	font-family: TH_Chakra_Petch_Bold;
+	font-family: Waffle Regular;
 	font-size: 45px;
 }
 
@@ -37,15 +46,10 @@ body h2{
 }
 
 #header {
-	text-align: center;
-	background: #C9D787; 
-	/* background: #FF8598; */
+	text-align: left;
+	background: #C9D787;
 	color: white;
-	font-size: 40px;
-}
-
-#header a{
-	color: grey;
+	font-size: 2em;
 }
 
 a {
@@ -53,16 +57,17 @@ a {
 }
 
 #content {
-	padding-top:10px;
-	padding-bottom:10px;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	padding-left: 5%;
 	width:100%;
 	color: black;
-	font-size: 40px;
-	float:right;
+	font-size: 1.5em;
+	float: right;
 }
 
 #content h1{
-	font-family:TH_Chakra_Petch_Bold;
+	font-family: Waffle Regular;
 	color:#7D8A2E;
 	border-style: dotted;
     border-width: 5px;
@@ -72,15 +77,25 @@ a {
 
 #sidebar{
 	background: #FF8598;
-	padding-top: 10px;
-	padding-bottom:10px;
-	width:20%;
-	float:right;
+	padding-top: 1%;
+	padding-bottom:1%;
+	padding-left: 2%;
+	width: 20%;
+	float: right;
+	text-align: left;
 }
 
 #sidebar a{
-	font-size: 30px;
-	margin-right:10%;
+	font-size: 1.2em;
+	margin-right: 10%;
+}
+
+#sidebar a:hover {
+	color: white;
+}
+
+#head-sidebar {
+	background: white;
 }
 
 .header2 {
@@ -122,7 +137,7 @@ table{
 }
 
 .users-list a{
-	font-family:TH_Chakra_Petch_Bold;
+	font-family: Waffle Regular;
 	color:#FF8598;
 }
 
