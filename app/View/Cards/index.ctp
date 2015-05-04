@@ -21,11 +21,22 @@
 	</table>
 	
 <p></p>
+	if($this->Session->check('Auth.User')){
+	if( $role == 'a'){
 <?php echo $this->Html->link( " Add New Card ",   array('controller'=>'cards','action'=>'add' ,'?' => array('deck_id' => $deck_id )) ),'&nbsp'; ?>
 <?php echo $this->Html->link( " Edit Deck ",   array('controller'=>'decks','action'=>'edit' ,'?' => array('deck_id' => $deck_id )) ),'&nbsp'; ?>
 <?php echo $this->Html->link( " Delete Deck ",   array('controller'=>'decks','action'=>'delete' ,'?' => array('deck_id' => $deck_id ) ),
     array('confirm' => 'Are you sure you want to delete this Deck?') ),'&nbsp' ?>
 	<?php echo $this->SocialShare->link('facebook',__('Share on Facebook')); ?>
+	}else{
+	if ($user_id == $decks['Deck']['user_id'] )
+	<?php echo $this->Html->link( " Add New Card ",   array('controller'=>'cards','action'=>'add' ,'?' => array('deck_id' => $deck_id )) ),'&nbsp'; ?>
+	<?php echo $this->Html->link( " Edit Deck ",   array('controller'=>'decks','action'=>'edit' ,'?' => array('deck_id' => $deck_id )) ),'&nbsp'; ?>
+	<?php echo $this->Html->link( " Delete Deck ",   array('controller'=>'decks','action'=>'delete' ,'?' => array('deck_id' => $deck_id ) ),
+    array('confirm' => 'Are you sure you want to delete this Deck?') ),'&nbsp' ?>
+	<?php echo $this->SocialShare->link('facebook',__('Share on Facebook')); ?>
+	}
+	}
 	
 
 	
@@ -74,9 +85,20 @@
 <p></p>
 <div>
 
+	if($this->Session->check('Auth.User')){
+	if( $role == 'a'){
 	<?php echo $this->Html->link( " Edit Card ",   array('controller'=>'cards','action'=>'edit' ,'?' => array('deck_id' => $deck_id , 'card_id' => $card['Card']['id'], )) ),'&nbsp&nbsp;' ?>
 	<?php echo $this->Html->link( " Delete Card ",   array('controller'=>'cards','action'=>'delete' ,'?' => array('deck_id' => $deck_id , 'card_id' => $card['Card']['id'] )),
     array('confirm' => 'Are you sure you want to delete this Card?') )?>
+	}else{
+	if ($user_id == $decks['Deck']['user_id'] )
+	<?php echo $this->Html->link( " Edit Card ",   array('controller'=>'cards','action'=>'edit' ,'?' => array('deck_id' => $deck_id , 'card_id' => $card['Card']['id'], )) ),'&nbsp&nbsp;' ?>
+	<?php echo $this->Html->link( " Delete Card ",   array('controller'=>'cards','action'=>'delete' ,'?' => array('deck_id' => $deck_id , 'card_id' => $card['Card']['id'] )),
+    array('confirm' => 'Are you sure you want to delete this Card?') )?>
+	}
+	}
+
+
 	
 </div>
 
