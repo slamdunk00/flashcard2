@@ -1,7 +1,7 @@
 <?php
 class DecksController extends AppController {
 	
-	var $uses = [ 'User' ,'Deck' ];
+	var $uses = [ 'User' ,'Deck', 'Card' ];
 	
     public function index() {
 		
@@ -66,18 +66,18 @@ class DecksController extends AppController {
 		$decks = $this->paginate('Deck');
 		$this->set(compact('decks'));
 		
+
         // $decks = $this->paginate('Deck');
         // $this->set(compact('decks'));
 		$this->set('cat_name', $cat_name);
-		
-			$users = $this->User->find('first',
-				array(
-				'conditions' => ['User.id' => 1]));
+		$this->set('cat_id', $cat_id);
 			
+		$users = $this->User->find('all');
 			$this->set('users', $users);
     }
 	
 	public function add(){
+
 			$deck = $this->Deck->find('all');
 			$this->set('deck', $deck); 
 			
@@ -93,7 +93,6 @@ class DecksController extends AppController {
     }
 	
     public function edit($id = null) {		
-
 		$deck_id = $this->params['url']['deck_id'];
 		$this->set('deck_id', $deck_id);
  		$categories = $this->Category->getCategory(); 
@@ -116,13 +115,42 @@ class DecksController extends AppController {
 			
 			$this->set('decks', $decks);
 			
+			
     }
 	
-		public function delete() {	
-	
-	
+		public function delete() {
 		$deck_id = $this->params['url']['deck_id'];
 		$this->set('deck_id', $deck_id);
+		
+		//find Card Id
+		$cards = $this->Card->find('all',
+			array(
+				'conditions' => [
+				'Card.deck_id' => $deck_id
+								]
+				)
+			);
+			
+			
+		foreach($cards as $card):
+		//find Card Path
+		$card1 = $this->Card->find('first',
+							array(
+								'conditions' => [
+									'Card.id' => $card['Card']['id']
+								]
+							)
+			);
+		
+		$file = new File(WWW_ROOT . $card1['Card']['frontpic'], false, 0777);
+		$file->delete();
+		$file->close();
+		
+		$file = new File(WWW_ROOT . $card1['Card']['backpic'], false, 0777);
+		$contents = $file->delete();
+		$file->close();
+			endforeach;
+		
 		
 		$this->Deck->id = $deck_id;
 		$this->Deck->delete();

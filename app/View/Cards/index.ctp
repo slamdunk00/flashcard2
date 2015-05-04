@@ -37,16 +37,30 @@
 <?php foreach($cards as $card): ?>
  <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="card-container">
 	<div class="flipper">
+
 <?php
-	$front = $card['Card']['front'];
+	$front = $card['Card']['frontpic'];
+	$back = $card['Card']['backpic'];
+	echo '<div>';
 	echo	'<div class="front">';
-	echo	 $this->Html->image($front, array('width' => '50px','alt'=>$front));
+	echo	 $card['Card']['front'];
 	echo	'</div>';
 	echo	'<div class="back">';
 	echo	$card['Card']['back'];
 	echo	'</div>';
+	echo '</div>';
+	echo '<div>';
+	if($card['Card']['frontpic'] != null){
+	echo	'<div class="front">';
+	echo	 $this->Html->image($front, array('width' => '50px','alt'=>''));
+	echo	'</div>';}
+	if($card['Card']['backpic'] != null){
+	echo	'<div class="back">';
+	echo	$this->Html->image($back, array('width' => '50px','alt'=>''));
+	echo	'</div>';}
+	echo 	'</div>';
 ?>	
-	
+
 		</div>
 </div>
 

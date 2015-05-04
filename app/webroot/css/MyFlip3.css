@@ -9,10 +9,12 @@
 
 .flip-container, .front, .back {
 	width: 300px;
-	height: 300px;
+	height: 350px;
 }
 
 .flip-container img{
+	top:50px;
+	position: relative;
 	width: 290px;
 	height: 290px;
 }
@@ -21,7 +23,7 @@
 .flipper {
 	transition: 0.6s;
 	transform-style: preserve-3d;
-
+	
 	position: relative;
 }
 

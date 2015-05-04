@@ -31,7 +31,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		
 		echo $this->Html->script('jquery-1.11.3.js');
 		echo $this->Html->css('style2.css');
-		echo $this->Html->css('MyFlip.css');
+		//echo $this->Html->css('MyFlip.css');
+		echo $this->Html->css('MyFlip3.css');
 		// echo $this->Html->script('jquery-1.11.2.min.js');
 		echo $this->Html->script('flip.js');
 
@@ -57,7 +58,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			if($this->Session->check('Auth.User')){
 				echo '<div id="sidebar">';
 				echo '<span>Category</span><ul>';
-				echo'<li><p>'.$this->Html->link( " ALL ",   array('controller'=>'decks','action'=>'index') ).'</p></li>'; 
+				echo '<li><p>'.$this->Html->link( " ALL Category ",   array('controller'=>'category','action'=>'index') ).'</p></li>';
+				echo'<li><p>'.$this->Html->link( " ALL Deck ",   array('controller'=>'decks','action'=>'index') ).'</p></li>'; 
 				foreach ($Last5Cat as $cat):
 				echo '<li><p>'.$this->Html->link( $cat['Category']['name'],   array('controller'=>'decks','action'=>'index', '?' => array('cat_id' => $cat['Category']['id'], 'cat_name' => $cat['Category']['name'] ) ) ) .'</p></li>';
 				endforeach;
@@ -65,10 +67,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				echo '<span>Profile</span><ul>';
 				
 				if( $role == 'a'){
-					echo '<li><p>'.$this->Html->link( " Mange User ",   array('controller'=>'users','action'=>'index') ).'</p></li>'; 
+					echo '<li><p>'.$this->Html->link( " Mange User ",   array('controller'=>'users','action'=>'add') ).'</p></li>'; 
+					echo '<li><p>'.$this->Html->link( " Add New Category ",   array('controller'=>'category','action'=>'index') ).'</p></li>';
 				}
 				echo '<li><p>'.$this->Html->link( " Add New Deck ",   array('controller'=>'decks','action'=>'add') ).'</p></li>';
-				echo '<li><p>'.$this->Html->link( " All My Deck ",   array('controller'=>'decks','action'=>'mydeck', $user_id ) ).'</p></li>';
+				echo '<li><p>'.$this->Html->link( " My Deck ",   array('controller'=>'decks','action'=>'mydeck', $user_id ) ).'</p></li>';
 				echo '<li><p>'.$this->Html->link( " Favourite ",   array('controller'=>'favourite','action'=>'index', $user_id ) ).'</p></li>';
 				echo '<li><p>'.$this->Html->link( " Achievement ",   array('controller'=>'achievements','action'=>'index', $user_id ) ).'</p></li>';
 				echo '<li><p>'.$this->Html->link( " Edit Profile ",   array('controller'=>'users','action'=>'edit', $user_id ) ).'</p></li>';

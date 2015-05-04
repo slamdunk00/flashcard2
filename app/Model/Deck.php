@@ -141,7 +141,7 @@ class Deck extends AppModel {
 		'Favourite' => array(
 			'className' => 'Favourite',
 			'foreignKey' => 'deck_id',
-			'dependent' => false
+			'dependent' => true
 		)
 	);
 
