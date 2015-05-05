@@ -5,11 +5,14 @@ class FavouriteController extends AppController {
 	
 	public function index($user_id=NULL) {
 		
-		$user = $this->Favourite->find('list', array('conditions' => ['Favourite.user_id' => $user_id], 'fields' => ['Favourite.deck_id']));
+		$user_list = $this->Favourite->find('list', array('conditions' => ['Favourite.user_id' => $user_id], 'fields' => ['Favourite.deck_id']));
 		//$this->set('user', $user);
 		
-		$deck = $this->Deck->find('all', array('conditions' => ['Deck.id' => $user]));
+		$deck = $this->Deck->find('all', array('conditions' => ['Deck.id' => $user_list]));
 		$this->set('deck', $deck);
+		
+		$user = $this->User->find('all');
+		$this->set('user', $user);
 		
 		//$favourites = $this->Favourite->find('all', array('Favourite.user_id', 'Favourite.deck_id'));
 		//$this->set('favourite', $favourites);
