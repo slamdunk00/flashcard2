@@ -14,8 +14,8 @@ class Category extends AppModel {
  */
 	public $validate = array(
 		'name' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -36,7 +36,7 @@ class Category extends AppModel {
 		'Deck' => array(
 			'className' => 'Deck',
 			'foreignKey' => 'category_id',
-			'dependent' => true,
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

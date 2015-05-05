@@ -23,42 +23,5 @@ class CategoryController extends AppController {
 			}
 		}
 	}
-	    public function edit($id = null) {		
-
-		$cat_id = $this->params['url']['cat_id'];
-		$cat_name = $this->params['url']['cat_name'];
-		$this->set('cat_id', $cat_id);
-		$this->set('cat_name', $cat_name);
-
-            if ($this->request->is('post') || $this->request->is('put')) {
-                $this->Category->id = $cat_id;
-                if ($this->Category->save($this->request->data)) {
-                    $this->Session->setFlash(__('Category has been Edit'));
-                    $this->redirect(array('controller' => 'cards','action' => 'index', '?' => array('deck_id' => $deck_id ) ));
-                }else{
-                    $this->Session->setFlash(__('Unable to Edit your Category.'));
-                }
-            }
-			
-			//แอ้ดเพิ่มเข้ามา
-
-			
-		
-			
-    }
-	
-		public function delete() {	
-	
-	
-		$cat_id = $this->params['url']['cat_id'];
-		$this->set('cat_id', $cat_id);
-		
-		$this->Category->id = $cat_id;
-		$this->Category->delete();
-		
-		$this->redirect(array('action' => 'index' ));
-			
-    }
-	
 }
 ?>
