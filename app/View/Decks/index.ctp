@@ -4,7 +4,7 @@
 ?>
 
 <h1><?php echo $cat_name; ?></h1>
-<?php 
+<?php
 	echo '<div class="decks">';
 	foreach($decks as $deck):
 	echo $deck['Deck']['name'];
