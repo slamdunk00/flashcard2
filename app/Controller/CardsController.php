@@ -144,14 +144,7 @@ $this->request->data['Card']['backpic'] = $backpath;
 
             if ($this->request->is('post') || $this->request->is('put')) {
                 $this->Card->id = $card_id;
-				
-						$file = new File(WWW_ROOT . $card['Card']['frontpic'], false, 0777);
-		$file->delete();
-		$file->close();
-		
-		$file = new File(WWW_ROOT . $card['Card']['backpic'], false, 0777);
-		$contents = $file->delete();
-		$file->close();
+			
 				
 				$permitted = array('image/gif','image/jpeg','image/pjpeg','image/png');
 				$typeOK1 = false;
@@ -174,6 +167,15 @@ $this->request->data['Card']['backpic'] = $backpath;
 				$backpic_update = null;
 				
 if(($typeOK1) && (typeOK2)) {
+	
+	
+		$file = new File(WWW_ROOT . $card['Card']['frontpic'], false, 0777);
+		$file->delete();
+		$file->close();
+		
+		$file = new File(WWW_ROOT . $card['Card']['backpic'], false, 0777);
+		$contents = $file->delete();
+		$file->close();
 if (
     !empty($this->request->data['Card']['frontpic_update']['tmp_name'])
     && is_uploaded_file($this->request->data['Card']['frontpic_update']['tmp_name'])

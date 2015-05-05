@@ -1,6 +1,6 @@
 <?php
 	echo 'Add Category';
-	echo $this->Form->create('Category', ['url' => ['controller' => 'category', 'action' => 'add']]);
+	echo $this->Form->create('Category');
 	echo 'Name: ';
 	echo $this->Form->input('name', [
 		'label' => false,
@@ -9,6 +9,6 @@
 		'value' => $cat_name,
 		'placeholder' => "category's name"
 	]);
-	echo $this->Form->submit('Add');
+	echo $this->Form->submit('Edit');
 	echo $this->Form->end();
 ?>

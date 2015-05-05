@@ -34,7 +34,7 @@ class CategoryController extends AppController {
                 $this->Category->id = $cat_id;
                 if ($this->Category->save($this->request->data)) {
                     $this->Session->setFlash(__('Category has been Edit'));
-                    $this->redirect(array('controller' => 'cards','action' => 'index', '?' => array('deck_id' => $deck_id ) ));
+                    $this->redirect(array('controller' => 'Category','action' => 'index') );
                 }else{
                     $this->Session->setFlash(__('Unable to Edit your Category.'));
                 }

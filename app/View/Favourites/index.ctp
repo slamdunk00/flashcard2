@@ -1,7 +1,7 @@
 <?php
 	echo '<div class="decks">';
 	foreach($deck as $decks):
-	echo $decks['Deck']['name'];
+	echo 'Deck :	&nbsp'.$decks['Deck']['name'];
 	
 	foreach($user as $users):
 	if ($decks['Deck']['user_id'] == $users['User']['id']){
@@ -13,7 +13,7 @@
 	echo $this->Html->link('play', ['controller' => 'cards', 'action' => 'index', '?' => ['deck_id' => $decks['Deck']['id']]]);
 	echo '</u>';
 	echo '</br>';
-	echo $decks['Deck']['description'];
+	echo 'Deck Description : &nbsp'.$decks['Deck']['description'];
 	echo '</br>---------------------------------------------------------------------------';
 	echo '</br>';
 	endforeach;

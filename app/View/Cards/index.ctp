@@ -27,14 +27,14 @@ echo $this->Html->link( " Add New Card ",   array('controller'=>'cards','action'
 echo $this->Html->link( " Edit Deck ",   array('controller'=>'decks','action'=>'edit' ,'?' => array('deck_id' => $deck_id )) ),'&nbsp'; 
 echo $this->Html->link( " Delete Deck ",   array('controller'=>'decks','action'=>'delete' ,'?' => array('deck_id' => $deck_id ) ),
     array('confirm' => 'Are you sure you want to delete this Deck?') ),'&nbsp';
-echo $this->SocialShare->link('facebook',__('Share on Facebook')); 
+echo '<p></p>'.$this->SocialShare->link('facebook',__('Share on Facebook')); 
 	}else{
 	if ($user_id == $decks['Deck']['user_id'] ){
  echo $this->Html->link( " Add New Card ",   array('controller'=>'cards','action'=>'add' ,'?' => array('deck_id' => $deck_id )) ),'&nbsp';
  echo $this->Html->link( " Edit Deck ",   array('controller'=>'decks','action'=>'edit' ,'?' => array('deck_id' => $deck_id )) ),'&nbsp'; 
  echo $this->Html->link( " Delete Deck ",   array('controller'=>'decks','action'=>'delete' ,'?' => array('deck_id' => $deck_id ) ),
     array('confirm' => 'Are you sure you want to delete this Deck?') ),'&nbsp' ;	
- echo $this->SocialShare->link('facebook',__('Share on Facebook')); 
+ echo '<p></p>'.$this->SocialShare->link('facebook',__('Share on Facebook')); 
 	}}
 	}
 	
