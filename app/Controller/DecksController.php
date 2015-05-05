@@ -56,7 +56,7 @@ class DecksController extends AppController {
 								'limit' => 5
 			);
 		}else{
-			$cat_name = "All Deck<br/>(from the Lastest)";
+			$cat_name = "All Deck";
 			$this->paginate = array(
 								'order' => array('Deck.id'=>'desc'),
 								'limit' => 10

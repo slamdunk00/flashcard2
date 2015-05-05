@@ -5,13 +5,19 @@
 
 <h1><?php echo $cat_name; ?></h1>
 <?php 
+	echo '<div class="decks">';
 	foreach($decks as $deck):
-	echo '<u>';
-	echo $this->Html->link( $deck['Deck']['name'],   array('controller'=>'cards','action'=>'index', '?' => array('deck_id' => $deck['Deck']['id'] )  ));
-	echo '</u>';
+	echo $deck['Deck']['name'];
 	echo ' by '.$deck['Deck']['user_id'].'<br/>';
+	echo ' ('.$deck['Deck']['description'].') ';
+	echo '<u id="play">';
+	echo $this->Html->link('play', array('controller'=>'cards','action'=>'index', '?' => array('deck_id' => $deck['Deck']['id'] )  ));
+	echo '</u>';
+	echo '</br>-------------------------------------------------------------------------';
+	echo '</br>';
 	//echo $users['User']['firstname'];	
 	endforeach;
+	echo '</div>';
 ?>
 <span style="margin-right:10px;"><?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?></span>
 <?php echo $this->Paginator->numbers(array(   'class' => 'numbers'     ));?>

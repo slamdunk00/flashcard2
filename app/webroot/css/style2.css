@@ -151,9 +151,8 @@ table, th, td {
 }
 
 h1 {
-	/* color: #FFC0A9; */
 	color:white;
-	font-size: 50px;
+	font-size: 1.5em;
 }
 
 span{
@@ -166,12 +165,12 @@ span{
 }
 
 .btn{
-	font-size:30px;
+	font-size:20px;
 	padding:6px;
 }
 
 #search_btn{
-	float:right;
+	float: right;
 	margin-top:5px;
 	margin-right:5px;
 	width:90px;
@@ -180,7 +179,15 @@ span{
 #search_box{
 	float:right;
 	width:250px;
-	font-size:40px;
+	font-size: .5em;
 	height:45px;
 	margin-top:5px;
+}
+.decks {
+	text-align: left;
+}
+
+#play {
+	float: right;
+	padding-right: 5%;
 }
