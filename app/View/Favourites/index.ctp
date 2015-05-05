@@ -8,5 +8,6 @@
 	echo $decks['Deck']['user_id'];
 	echo '</li>';
 	echo '</ul>';
+	echo $user_id;
 	endforeach;
 ?>

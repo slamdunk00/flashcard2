@@ -34,9 +34,21 @@ echo $this->SocialShare->link('facebook',__('Share on Facebook'));
  echo $this->Html->link( " Edit Deck ",   array('controller'=>'decks','action'=>'edit' ,'?' => array('deck_id' => $deck_id )) ),'&nbsp'; 
  echo $this->Html->link( " Delete Deck ",   array('controller'=>'decks','action'=>'delete' ,'?' => array('deck_id' => $deck_id ) ),
     array('confirm' => 'Are you sure you want to delete this Deck?') ),'&nbsp' ;	
- echo $this->SocialShare->link('facebook',__('Share on Facebook')); 
+ echo $this->SocialShare->link('facebook',__('Share on Facebook')),'&nbsp&nbsp'; 
 	}}
 	}
+	$favourite = false;
+	foreach($favs as $fav):
+	if($fav['Favourite']['deck_id'] == $deck_id){
+	$favourite = true;}
+	endforeach;
+	if($favourite){
+	echo $this->Html->link( " UNFavourite ",   array('controller'=>'Favourite','action'=>'delete' ,'?' => array('deck_id' => $deck_id,'user_id' => $user_id )),
+    array('confirm' => 'Are you sure you want to UnFavourite?') ),'&nbsp' ;
+	}else{
+	echo $this->Html->link( " Add Favourite ",   array('controller'=>'Favourite','action'=>'add' ,'?' => array('deck_id' => $deck_id,'user_id' => $user_id )) ),'&nbsp'; 
+	}
+	
 	?>
 
 	

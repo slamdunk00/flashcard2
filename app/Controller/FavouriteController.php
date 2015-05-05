@@ -15,5 +15,42 @@ class FavouriteController extends AppController {
 		//$this->set('favourite', $favourites);
 		
 	}
+	
+		public function add() {
+		$deck_id = $this->params['url']['deck_id'];
+		$this->set('deck_id', $deck_id);
+		$user_id = $this->params['url']['user_id'];
+		$this->set('user_id', $user_id);
+		
+
+		if ($this->request->is('post')) {
+		$this->Favourite->create();
+
+		if ($this->Favourite->save($this->request->data)) {
+        $this->redirect(array('controller' => 'cards','action' => 'index','?' => array('deck_id' => $deck_id )));
+		$this->Session->setFlash(__('Add Favourite complete'));
+
+		}else{
+            $this->Session->setFlash(__('Unable to Add Favourite.'));
+             }
+
+		
+		}}
+	
+		public function delete() {
+		$deck_id = $this->params['url']['deck_id'];
+		$this->set('deck_id', $deck_id);
+		$user_id = $this->params['url']['user_id'];
+		$this->set('user_id', $user_id);
+		
+		$this->Favourite->user_id = $user_id;
+		$this->Favourite->deck_id = $deck_id;
+		$this->Favourite->delete();
+		$this->redirect(array('controller' => 'cards','action' => 'index','?' => array('deck_id' => $deck_id )));
+		
+		
+
+		
+	}
 }
 ?>

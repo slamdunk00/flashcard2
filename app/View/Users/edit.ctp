@@ -52,15 +52,20 @@
 					'options' => array( 'a' => 'Admin', 'u' => 'User')
 			));
 		} */
+		echo '<br/>';
 		echo $this->Form->submit('Edit User', array('class' => 'form-submit',  'title' => 'Click here to add the user') ); 
+		
 ?>
     </fieldset>
-<?php echo $this->Form->end(); ?>
+<?php echo $this->Form->end(); 
+
+echo $this->Html->link( "Logout",   array('action'=>'logout') ); 
+?>
+
 </div>
 <br/>
 
 <?php 
 
-echo '<br/>';
-echo $this->Html->link( "Logout",   array('action'=>'logout') ); 
+
 ?>

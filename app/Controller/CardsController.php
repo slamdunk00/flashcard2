@@ -2,7 +2,7 @@
 class CardsController extends AppController {
 	
 	/* var $uses = [ 'User' ]; */
-	 var $uses = [ 'Deck','Card','File', 'Utility' ]; 
+	 var $uses = [ 'Deck','Card','File', 'Utility','Favourite' ]; 
 
  
     public function index( $deck_id=null ){
@@ -36,6 +36,9 @@ class CardsController extends AppController {
 			'conditions' => ['Category.id' => $decks['Deck']['category_id']]));
 			
 			$this->set('cat', $cat);
+			
+			$favs = $this->Favourite->find('all');
+			$this->set('favs', $favs);
 			
 		
 	}
