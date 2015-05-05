@@ -41,7 +41,9 @@
     </fieldset>
 	
 <?php echo $this->Form->end(); 
-		echo $this->Html->link("Back", array('controller'=>'cards','action'=> 'index','?' => array('deck_id' => $deck_id )), array( 'class' => 'button'));?>
+		echo $this->Html->link("Back", array('controller'=>'cards','action'=> 'index','?' => array('deck_id' => $deck_id )), array( 'class' => 'button'));
+		?>
+	
 
 
 

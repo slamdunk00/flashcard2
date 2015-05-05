@@ -2,11 +2,11 @@
 <table>
     <thead>
         <tr>
-            <th></th>
-            <th><?php echo $this->Paginator->sort('username', 'Username');?>  </th>
-            <th><?php echo $this->Paginator->sort('email', 'E-Mail');?></th>
-            <th><?php echo $this->Paginator->sort('created', 'Created');?></th>
-            <th><?php echo $this->Paginator->sort('modified','Role');?></th>
+            <th><?php echo $this->Paginator->sort('username', 'Username');?></th>
+            <th><?php echo $this->Paginator->sort('email', 'E-Mail');?> </th>
+			<th><?php echo $this->Paginator->sort('created', 'Created');?></th>
+            <th><?php echo $this->Paginator->sort('modified', 'Modified');?></th>
+            <th><?php echo $this->Paginator->sort('role','Role');?></th>
 
         </tr>
     </thead>
@@ -18,8 +18,8 @@
         <?php endif; ?>
             <td><?php echo $this->Html->link( $user['User']['username']  ,   array('action'=>'edit', $user['User']['id']),array('escape' => false) );?></td>
             <td style="text-align: center;"><?php echo $user['User']['email']; ?></td>
-            <td style="text-align: center;"><?php echo $this->Time->niceShort($user['User']['created']); ?></td>
-            <td style="text-align: center;"><?php echo $this->Time->niceShort($user['User']['modified']); ?></td>
+			            <td style="text-align: center;"><?php echo $this->Time->niceShort($user['User']['created']); ?></td>
+			<td style="text-align: center;"><?php echo $this->Time->niceShort($user['User']['modified']); ?></td>
             <td style="text-align: center;"><?php echo $user['User']['role']; ?></td>
         </tr>
         <?php endforeach; ?>
