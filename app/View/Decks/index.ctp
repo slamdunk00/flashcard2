@@ -13,7 +13,7 @@
 	echo '<u id="play">';
 	echo $this->Html->link('play', array('controller'=>'cards','action'=>'index', '?' => array('deck_id' => $deck['Deck']['id'] )  ));
 	echo '</u>';
-	echo '</br>-------------------------------------------------------------------------';
+	echo '</br>---------------------------------------------------------------------------';
 	echo '</br>';
 	//echo $users['User']['firstname'];	
 	endforeach;
