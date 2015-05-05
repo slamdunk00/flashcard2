@@ -37,6 +37,8 @@ echo $this->SocialShare->link('facebook',__('Share on Facebook'));
  echo $this->SocialShare->link('facebook',__('Share on Facebook')); 
 	}}
 	}
+	
+	
 	?>
 
 	
